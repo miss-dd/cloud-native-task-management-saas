@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 const express = require('express');
-const taskRoutes = require('./routes/tasks');
+const taskRoutes = require('./src/routes/taskRoutes');
+const authRoutes = require('./src/routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,8 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/api/tasks', taskRoutes);
+app.use('/api/auth', authRoutes);
+
 
 app.listen(PORT, HOST, () => {
     console.log(`Server running on http://${HOST}:${PORT}`);
